@@ -11,6 +11,7 @@ public class ScoreManager : MonoBehaviour
 
     private void Awake() {
         AddPoints = OnAddPoints;
+        UpdateUI();
     }
 
     void OnAddPoints(int delta) {
