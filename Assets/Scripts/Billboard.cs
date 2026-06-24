@@ -9,9 +9,9 @@ public class Billboard : MonoBehaviour
         cameraTransform = Camera.main.transform;
     }
 
-    private void Update()
+    private void LateUpdate()
     {
         transform.LookAt(cameraTransform);
-        transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0);
+        transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y + 180f, 0);
     }
 }
