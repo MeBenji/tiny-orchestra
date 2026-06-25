@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] PlayerInput input;
     [SerializeField] Transform vinyl;
 
-    [SerializeField] float keysMult = 10;
+    [SerializeField] float keysMult = 120;
     [SerializeField] float pointerMult = 1;
 
     [SerializeField] float drag = 80;

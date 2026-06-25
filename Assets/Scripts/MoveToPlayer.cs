@@ -13,6 +13,10 @@ public class MoveToPlayer : MonoBehaviour
     private void Update()
     {
         Vector3 direction = (target.position - transform.position).normalized;
-        transform.position = transform.position + speed * Time.deltaTime * direction;
+        Vector3 newPos = transform.position + (speed * Time.deltaTime * direction);
+        newPos.y = transform.position.y;
+
+        transform.position = newPos;
+
     }
 }

@@ -49,7 +49,7 @@ MonoBehaviour:
   inputType: 0
   input: {fileID: 7064203384027108742}
   vinyl: {fileID: 0}
-  keysMult: 10
+  keysMult: 120
   pointerMult: 1
   drag: 80
 --- !u!114 &7064203384027108742
