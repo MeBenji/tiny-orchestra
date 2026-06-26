@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4597494791865986796
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4531680065350590889}
+  - component: {fileID: 2433956445147871911}
+  m_Layer: 0
+  m_Name: SpawnManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4531680065350590889
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4597494791865986796}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2433956445147871911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4597494791865986796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9224f0e13641b8947b54477c5bc124f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpawnManager
+  spawnRadius: 7.8
+  spawnDelay: 5
+  phases:
+  - prefabs:
+    - {fileID: 4073339753713110689, guid: 5620f19b5bc4eb64db2c1f53a46819d1, type: 3}
+    quantity: 1
+    minOneEach: 0
+  - prefabs:
+    - {fileID: 658549241320213276, guid: f31e7ff586aceed4bb693b0532ea26f3, type: 3}
+    - {fileID: 2091840545587401968, guid: 3b5d64e69b035564c8e0908213450266, type: 3}
+    - {fileID: 8067729591522788890, guid: c2dedd29de5446845929f622da936d85, type: 3}
+    - {fileID: 4294056325881663222, guid: ba2c89c2292f05f4584116752bba6931, type: 3}
+    - {fileID: 7164817201017631968, guid: c40c1bbbec683c048a69cffc71a3120f, type: 3}
+    - {fileID: 7316295662521049424, guid: 87c83622a0cb361448ab5f5ff7eccfde, type: 3}
+    - {fileID: 7316295662521049424, guid: cd0c645df2c58bb429562ffa8fa8648a, type: 3}
+    - {fileID: 7316295662521049424, guid: d3e0ee3859636b845a34919fb877e4f1, type: 3}
+    quantity: 8
+    minOneEach: 1
+  - prefabs:
+    - {fileID: 7028697386537541363, guid: 06628d7834e8b5349a6350ed48491423, type: 3}
+    quantity: 1
+    minOneEach: 0
+  enemySpawnList: []
