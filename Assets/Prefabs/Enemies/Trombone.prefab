@@ -54,12 +54,12 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 8c0d735c49fd0c54693ea4b0fd3cb57e, type: 2}
     - target: {fileID: 3479550470548846153, guid: 65b5165988b1fe04aa82f5f1e1ac5939, type: 3}
       propertyPath: m_Name
-      value: Trambone
+      value: Trombone
       objectReference: {fileID: 0}
     - target: {fileID: 7741605626795136845, guid: 65b5165988b1fe04aa82f5f1e1ac5939, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 9e4472fcb825a3148ae8d31a0ee7242e, type: 3}
+      objectReference: {fileID: 21300000, guid: 39c9f171cad9e174bbc0045ca060a9df, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
