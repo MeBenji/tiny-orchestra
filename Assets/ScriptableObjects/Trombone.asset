@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fa6cdef6011d956479b47a9845315aa3, type: 3}
-  m_Name: Trambone
+  m_Name: Trombone
   m_EditorClassIdentifier: Assembly-CSharp::Instrument
   instrumentType: 6
   track: {fileID: 8300000, guid: 252cb2d06970cc845ae68a42bd5f4cc2, type: 3}
