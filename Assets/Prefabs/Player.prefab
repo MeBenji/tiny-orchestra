@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1108044014245152684}
   - component: {fileID: 3623475364642366273}
+  - component: {fileID: 7227491156053054110}
   - component: {fileID: 7064203384027108742}
   m_Layer: 0
   m_Name: Player
@@ -52,6 +53,23 @@ MonoBehaviour:
   keysMult: 120
   pointerMult: 1
   drag: 80
+--- !u!114 &7227491156053054110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1510326903209946962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dd24f7c468d53a4ca6cf74b669ef6ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Direct
+  enemyMask:
+    serializedVersion: 2
+    m_Bits: 128
+  defaultMaterial: {fileID: -876546973899608171, guid: 7470d22a50e35b74cb8a9e6db0595597, type: 3}
+  mouseOnMaterial: {fileID: -876546973899608171, guid: 571ac6852954c7b478715f5d44fc455b, type: 3}
 --- !u!114 &7064203384027108742
 MonoBehaviour:
   m_ObjectHideFlags: 0
