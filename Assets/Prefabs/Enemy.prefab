@@ -54,6 +54,7 @@ MonoBehaviour:
   instrument: {fileID: 0}
   startPlayEffect: {fileID: 7165898915320878343}
   whilePlayEffect: {fileID: 8484718212850288322}
+  highlightMaterial: {fileID: 2100000, guid: 279c17c7ab97e8a42b49dbbfc732ecee, type: 2}
   onPlayInstrument:
     m_PersistentCalls:
       m_Calls: []

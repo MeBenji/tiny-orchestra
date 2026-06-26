@@ -7,12 +7,16 @@ public class EnemyController : MonoBehaviour
     [SerializeField] Instrument instrument;
     [SerializeField] ParticleSystem startPlayEffect;
     [SerializeField] ParticleSystem whilePlayEffect;
+    [SerializeField] Material highlightMaterial;
     public UnityEvent onPlayInstrument;
+    public bool IsPlaying { get; private set; }
+    Material baseMaterial;
     SpriteRenderer renderer;
     AudioSource audioSource;
 
     private void Awake() {
         renderer = GetComponentInChildren<SpriteRenderer>();
+        baseMaterial = renderer.material;
         audioSource = GetComponent<AudioSource>();
     }
 
@@ -20,7 +24,7 @@ public class EnemyController : MonoBehaviour
         audioSource.Play();
 
         onPlayInstrument.AddListener(UpdateTrackSystem);
-        onPlayInstrument.AddListener(TransitionAnimation);
+        onPlayInstrument.AddListener(TransitionState);
         onPlayInstrument.AddListener(TransitionSound);
         onPlayInstrument.AddListener(PlayEffects);
     }
@@ -30,8 +34,12 @@ public class EnemyController : MonoBehaviour
         TracksSystem.priorizeInstrument?.Invoke(instrument.type);
     }
 
-    private void TransitionAnimation()
+    private void TransitionState()
     {
+        IsPlaying = true;
+        GetComponent<BoxCollider>().enabled = false;
+        Select(false);
+        GetComponent<MoveToPlayer>().enabled = false;
     }
 
     private void TransitionSound()
@@ -52,5 +60,12 @@ public class EnemyController : MonoBehaviour
         TracksSystem.resetInstrument?.Invoke();
     }
 
-    public SpriteRenderer getRenderer() { return renderer; }
+    public void Select(bool isSelected)
+    {
+        if (IsPlaying) {
+            renderer.material = baseMaterial;
+            return;
+        }
+        renderer.material = isSelected ? highlightMaterial : baseMaterial;
+    }
 }

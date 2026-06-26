@@ -8,7 +8,7 @@ public class Direct : MonoBehaviour
     PlayerInput input;
     Camera cam;
 
-    EnemyController currentEnemy;
+    EnemyController previousEnemy;
 
     [SerializeField] Material defaultMaterial;
     [SerializeField] Material mouseOnMaterial;
@@ -32,10 +32,10 @@ public class Direct : MonoBehaviour
             RayCastPlayer();
         }
 
-        if (Input.GetMouseButtonDown(0) && currentEnemy != null)
+        if (Input.GetMouseButtonDown(0) && previousEnemy != null)
         {
-            // currentEnemy.OnPlayerClicksOn();
-            currentEnemy.onPlayInstrument?.Invoke();
+            previousEnemy.onPlayInstrument?.Invoke();
+            previousEnemy.Select(false);
         }
     }
 
@@ -47,13 +47,17 @@ public class Direct : MonoBehaviour
         {
             Debug.DrawLine(ray.origin, hit.point, Color.red);
 
-            currentEnemy = hit.transform.GetComponent<EnemyController>();
-            currentEnemy.getRenderer().sharedMaterial = mouseOnMaterial;
-
+            EnemyController currentEnemy = hit.transform.GetComponent<EnemyController>();
+            if (previousEnemy && currentEnemy != previousEnemy)
+            {
+                previousEnemy.Select(false);
+            }
+            currentEnemy.Select(true);
+            previousEnemy = currentEnemy;
         }
-        else if (currentEnemy != null)
+        else if (previousEnemy != null)
         {
-            currentEnemy.getRenderer().sharedMaterial = defaultMaterial;
+            previousEnemy.Select(false);
         }
     }
 
