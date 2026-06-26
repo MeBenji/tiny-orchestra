@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 public class Direct : MonoBehaviour
 {
     [SerializeField] LayerMask enemyMask;
-    PlayerInput input;
+    [SerializeField] PlayerInput input;
     Camera cam;
 
     EnemyController previousEnemy;
@@ -17,7 +17,6 @@ public class Direct : MonoBehaviour
 
     private void Awake()
     {
-        input = GetComponent<PlayerInput>();
         cam = Camera.main;
     }
 
@@ -33,6 +32,11 @@ public class Direct : MonoBehaviour
         }
 
         if (Input.GetMouseButtonDown(0) && previousEnemy != null)
+        {
+            previousEnemy.onPlayInstrument?.Invoke();
+            previousEnemy.Select(false);
+            previousEnemy = null;
+        } else if (input.actions["Fire"].WasPressedThisFrame() && previousEnemy != null)
         {
             previousEnemy.onPlayInstrument?.Invoke();
             previousEnemy.Select(false);

@@ -584,6 +584,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1896132691}
     - target: {fileID: 7227491156053054110, guid: efdc1e7346b4d784eabcabf9340d0e02, type: 3}
+      propertyPath: input
+      value: 
+      objectReference: {fileID: 1812607681}
+    - target: {fileID: 7227491156053054110, guid: efdc1e7346b4d784eabcabf9340d0e02, type: 3}
       propertyPath: defaultMaterial
       value: 
       objectReference: {fileID: 2100000, guid: bccd7b27c70bde54699f400018a22db5, type: 2}
@@ -596,6 +600,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: efdc1e7346b4d784eabcabf9340d0e02, type: 3}
+--- !u!114 &1812607681 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7064203384027108742, guid: efdc1e7346b4d784eabcabf9340d0e02, type: 3}
+  m_PrefabInstance: {fileID: 1250734701}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.PlayerInput
 --- !u!4 &1896132691 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5611420298838300411, guid: c69f90ece30711e488b1e6fe7f6a867c, type: 3}
@@ -780,6 +795,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 25612465214236077, guid: 6ad14c09ccc1689449e2b68a4ea9acb1, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 25612465214236077, guid: 6ad14c09ccc1689449e2b68a4ea9acb1, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 25612465214236077, guid: 6ad14c09ccc1689449e2b68a4ea9acb1, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5511980876822781515, guid: 6ad14c09ccc1689449e2b68a4ea9acb1, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5511980876822781515, guid: 6ad14c09ccc1689449e2b68a4ea9acb1, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5511980876822781515, guid: 6ad14c09ccc1689449e2b68a4ea9acb1, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7539565942455499079, guid: 6ad14c09ccc1689449e2b68a4ea9acb1, type: 3}
       propertyPath: m_Name
       value: Score Canvas
