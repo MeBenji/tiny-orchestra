@@ -36,6 +36,7 @@ public class Direct : MonoBehaviour
         {
             previousEnemy.onPlayInstrument?.Invoke();
             previousEnemy.Select(false);
+            previousEnemy = null;
         }
     }
 
