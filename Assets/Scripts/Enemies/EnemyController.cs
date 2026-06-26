@@ -8,6 +8,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField] ParticleSystem startPlayEffect;
     [SerializeField] ParticleSystem whilePlayEffect;
     [SerializeField] Material highlightMaterial;
+    [SerializeField] int points;
     public UnityEvent onPlayInstrument;
     public bool IsPlaying { get; private set; }
     Material baseMaterial;
@@ -23,10 +24,16 @@ public class EnemyController : MonoBehaviour
     private void OnEnable() {
         audioSource.Play();
 
+        onPlayInstrument.AddListener(AddScore);
         onPlayInstrument.AddListener(UpdateTrackSystem);
         onPlayInstrument.AddListener(TransitionState);
         onPlayInstrument.AddListener(TransitionSound);
         onPlayInstrument.AddListener(PlayEffects);
+    }
+
+    private void AddScore()
+    {
+        ScoreManager.AddPoints?.Invoke(points);
     }
 
     private void UpdateTrackSystem()
@@ -53,11 +60,6 @@ public class EnemyController : MonoBehaviour
     {
         startPlayEffect.Play();
         whilePlayEffect.Play();
-    }
-
-    public void OnPlayerClicksOn() {
-        Debug.Log("ENEMY CLICKED!");
-        TracksSystem.resetInstrument?.Invoke();
     }
 
     public void Select(bool isSelected)
