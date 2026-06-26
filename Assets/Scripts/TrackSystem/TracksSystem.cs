@@ -5,10 +5,16 @@ using UnityEngine;
 public class TracksSystem : MonoBehaviour
 {
     public enum Instruments {
-        a,
-        b,
-        c,
-        d
+        Bass,
+        Celli,
+        Cymbals,
+        Flute,
+        Harp,
+        Snare,
+        Trambone,
+        Violin1,
+        Violin2,
+        Violin3
     }
 
     [SerializeField] AudioSource[] tracks;
