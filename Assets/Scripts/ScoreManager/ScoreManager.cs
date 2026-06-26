@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class ScoreManager : MonoBehaviour
     public static SetPoints AddPoints;
 
     int points;
-    [SerializeField] TMP_Text PointText;
+    public UnityEvent<int> onUpdatePoints;
 
     int highScore;
 
@@ -23,18 +24,17 @@ public class ScoreManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         AddPoints = OnAddPoints;
-        UpdateUI();
     }
 
     void OnAddPoints(int delta)
     {
         points += delta;
-        UpdateUI();
+        onUpdatePoints?.Invoke(points);
     }
 
-    void UpdateUI()
+    public int GetPoints()
     {
-        PointText.text = points.ToString();
+        return points;
     }
 
     void LoadHighScore()
