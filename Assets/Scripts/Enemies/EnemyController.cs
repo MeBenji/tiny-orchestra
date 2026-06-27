@@ -24,6 +24,8 @@ public class EnemyController : MonoBehaviour
     private void OnEnable() {
         audioSource.Play();
 
+        TracksSystem.priorizeInstrument?.Invoke(instrument.type);
+
         onPlayInstrument.AddListener(AddScore);
         onPlayInstrument.AddListener(UpdateTrackSystem);
         onPlayInstrument.AddListener(TransitionState);
@@ -38,7 +40,7 @@ public class EnemyController : MonoBehaviour
 
     private void UpdateTrackSystem()
     {
-        TracksSystem.priorizeInstrument?.Invoke(instrument.type);
+        TracksSystem.unpriorizeInstrument?.Invoke(instrument.type);
     }
 
     private void TransitionState()

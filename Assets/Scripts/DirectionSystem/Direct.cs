@@ -14,6 +14,8 @@ public class Direct : MonoBehaviour
     [SerializeField] Material mouseOnMaterial;
 
     [SerializeField] bool mouseAim;
+    float maxDist = 25f;
+    [SerializeField] float radiusCast = 1;
 
     private void Awake()
     {
@@ -46,9 +48,12 @@ public class Direct : MonoBehaviour
 
     void RayCast(Ray ray)
     {
-        float maxDist = 25f;
         Debug.DrawRay(ray.origin, ray.direction * maxDist);
-        if (Physics.Raycast(ray, out RaycastHit hit, maxDist, enemyMask))
+
+        RaycastHit hit;
+        bool cast = mouseAim ? Physics.Raycast(ray, out hit, maxDist, enemyMask) : Physics.SphereCast(ray, radiusCast, out hit, maxDist, enemyMask);
+
+        if (cast)
         {
             Debug.DrawLine(ray.origin, hit.point, Color.red);
 
@@ -76,5 +81,10 @@ public class Direct : MonoBehaviour
     {
         Ray ray = new Ray(transform.position, transform.forward);
         RayCast(ray);
+    }
+
+    private void OnDrawGizmos() {
+        Gizmos.color = Color.aquamarine;
+        Gizmos.DrawWireSphere(transform.position, !mouseAim ? radiusCast : maxDist);
     }
 }
