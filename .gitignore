@@ -105,8 +105,5 @@ InitTestScene*.unity*
 # Auto-generated cache in Assets folder
 /[Aa]ssets/[Ss]ceneDependencyCache*
 
-/Assets/Concert Pack*
-/Assets/Theatre White*
-/Assets/DeepSpaceSkyboxPack*
 /WindowsBuilds
 /WebBuilds
