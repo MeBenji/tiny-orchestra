@@ -1,14 +1,12 @@
-using NUnit.Framework;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Security.Cryptography;
 using UnityEngine;
-using static TracksSystem;
 
 public class TracksSystem : MonoBehaviour
 {
-    public enum Instruments {
+    public enum Instruments
+    {
         Bass,
         Celli,
         Cymbals,
@@ -21,113 +19,84 @@ public class TracksSystem : MonoBehaviour
         Violin3
     }
 
-    [SerializeField] AudioSource[] tracks;
-    [SerializeField] float maxVol = 1.2f;
-    [SerializeField] float midVol = 1;
-    [SerializeField] float minVol = 0;
-
-    List<Instruments> focusedInstruments = new();
-    public static Action<Instruments, float>  enemyInstrument;
-    public static Action<Instruments> priorizeInstrument;
-    public static Action<Instruments> unpriorizeInstrument;
-    public static Action resetInstrument;
-    public static Action stopMusic;
-
-    private void Awake() {
-        enemyInstrument = OnEnemyInstrument;
-        priorizeInstrument = OnPriorizeInstrument;
-        unpriorizeInstrument = OnResetInstrument;
-        resetInstrument = OnResetInstruments;
-        stopMusic = OnStopMusic;
-    }
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [System.Serializable]
+    public struct InstrumentState
     {
-        
+        public Instruments instrument;
+        public AudioSource track;
+        public float volume;
     }
 
-    private void Update() {
-        if(Input.GetKeyDown(KeyCode.T)){
-            OnEnemyInstrument((Instruments)(0), 2);
+    [SerializeField] private float volumeFadeTime = 1f;
+    private Coroutine fadeCoroutine;
+    private double playDelay = 1.0;
+
+    [SerializeField] List<InstrumentState> instrumentStates;
+    Dictionary<Instruments, InstrumentState> instrumentStates_dict;
+
+    public float maxVolume = 1f;
+
+    public static Action stopMusic;
+    public static Action<Instruments, float> playInstrument;
+
+    private void Awake()
+    {
+        playInstrument = OnPlayInstrument;
+        stopMusic = OnStopMusic;
+
+        instrumentStates_dict = new Dictionary<Instruments, InstrumentState>();
+        foreach(InstrumentState state in instrumentStates)
+        {
+            state.track.Stop();
+            state.track.volume = state.volume;
+            instrumentStates_dict.Add(state.instrument, state);
         }
 
-        if(Input.GetKeyDown(KeyCode.Y)) {
-            OnEnemyInstrument((Instruments)(1), 2);
-        }
-
-        UpdateTracksVolume();
+        PlayMusic();
     }
 
-    void UpdateTracksVolume() {
-        for(int i = 0; i < tracks.Length; i++) {
-            bool listEmpity = focusedInstruments.Count > 0;
-            float target = listEmpity ? focusedInstruments.Contains((Instruments)i) ? maxVol : minVol : midVol;
+    void OnPlayInstrument(Instruments instrument, float volume)
+    {
+        InstrumentState state = instrumentStates_dict[instrument];
 
-            float speed = listEmpity ? 30 : 10;
-
-            tracks[i].volume = Mathf.MoveTowards(tracks[i].volume, target, Time.deltaTime * speed);
-        }
-    }
-
-    void OnEnemyInstrument(Instruments instruments, float duration) {
-        StartCoroutine(corrutine());
-
-        IEnumerator corrutine() {
-            OnPriorizeInstrument(instruments);
-
-            yield return new WaitForSeconds(1 + duration);
-            OnResetInstrument(instruments);
-        }
-    }
-
-    void OnPriorizeInstrument(Instruments instruments) {
-
-        focusedInstruments.Add(instruments);
-
-        /*StartCoroutine(corrutine());
-
-        IEnumerator corrutine() {
-            float t = 0;
-            while(t <= 1) {
-                for(int i = 0; i < tracks.Length; i++) {
-                    float target = i == (int)(instruments) ? maxVol : minVol;
-
-                    tracks[i].volume = Mathf.Lerp(tracks[i].volume, target, t);
-                }
-
-                t += Time.deltaTime;
-                yield return null;
+        if(state.volume < 1)
+        {
+            float targetVolume = Mathf.Clamp(state.volume + volume, 0f, maxVolume);
+            if (fadeCoroutine != null)
+            {
+                StopCoroutine(fadeCoroutine);
             }
-        }*/
+            fadeCoroutine = StartCoroutine(FadeVolume(state.track, state.volume, targetVolume));
+            state.volume += targetVolume;
+        }
     }
 
-    void OnResetInstrument(Instruments instruments) {
-        focusedInstruments.Remove(instruments);
+    IEnumerator FadeVolume(AudioSource track, float start, float target)
+    {
+        float t = 0;
+        while (t < volumeFadeTime)
+        {
+            t += Time.deltaTime;
+            Mathf.Clamp01(t);
+            track.volume = Mathf.Lerp(start, target, t);
+            yield return null;
+        }
     }
 
-
-    void OnResetInstruments() {
-        StartCoroutine(corrutine());
-
-        IEnumerator corrutine() {
-            float t = 0;
-            while(t <= 1) {
-                for(int i = 0; i < tracks.Length; i++) {
-                    tracks[i].volume = Mathf.Lerp(tracks[i].volume, midVol, t);
-                }
-
-                t += Time.deltaTime;
-                yield return null;
-            }
+    void PlayMusic()
+    {
+        double startDSPTime = AudioSettings.dspTime + playDelay;
+        foreach (InstrumentState state in instrumentStates)
+        {
+            state.track.PlayScheduled(startDSPTime);
         }
     }
 
     void OnStopMusic()
     {
-        foreach(AudioSource track in tracks)
+        foreach (InstrumentState state in instrumentStates)
         {
-            track.Stop();
+            state.track.Stop();
         }
     }
 }

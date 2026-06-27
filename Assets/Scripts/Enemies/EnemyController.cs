@@ -13,6 +13,7 @@ public class EnemyController : MonoBehaviour
     public bool IsPlaying { get; private set; }
     Material baseMaterial;
     SpriteRenderer renderer;
+    bool isWalking;
     AudioSource audioSource;
 
     private void Awake() {
@@ -24,13 +25,14 @@ public class EnemyController : MonoBehaviour
     private void OnEnable() {
         audioSource.Play();
 
-        TracksSystem.priorizeInstrument?.Invoke(instrument.type);
-
         onPlayInstrument.AddListener(AddScore);
         onPlayInstrument.AddListener(UpdateTrackSystem);
         onPlayInstrument.AddListener(TransitionState);
         onPlayInstrument.AddListener(TransitionSound);
         onPlayInstrument.AddListener(PlayEffects);
+
+        GameManager.Instance.onLose.AddListener(StopSteps);
+        GameManager.Instance.onLose.AddListener(StopPlayEffects);
     }
 
     private void AddScore()
@@ -40,7 +42,7 @@ public class EnemyController : MonoBehaviour
 
     private void UpdateTrackSystem()
     {
-        TracksSystem.unpriorizeInstrument?.Invoke(instrument.type);
+        TracksSystem.playInstrument?.Invoke(instrument.type, 1f);
     }
 
     private void TransitionState()
@@ -64,15 +66,27 @@ public class EnemyController : MonoBehaviour
         whilePlayEffect.Play();
     }
 
+    private void StopPlayEffects()
+    {
+        whilePlayEffect.Stop();
+    }
+
     public void Trip()
     {
+        GameManager.Instance.onLose?.Invoke();
+        GameManager.Instance.onGameOver?.Invoke();
+        StopSteps();
         audioSource.PlayOneShot(instrument.tripSound);
     }
 
     public void StopSteps()
     {
-        GetComponent<MoveToPlayer>().enabled = false;
-        audioSource.Stop();
+        if(isWalking)
+        {
+            GetComponent<MoveToPlayer>().enabled = false;
+            audioSource.Stop();
+            isWalking = false;
+        }
     }
 
     public void Select(bool isSelected)
