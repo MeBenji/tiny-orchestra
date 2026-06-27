@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa6cdef6011d956479b47a9845315aa3, type: 3}
   m_Name: Violin1
   m_EditorClassIdentifier: Assembly-CSharp::Instrument
-  instrumentType: 7
+  type: 0
   track: {fileID: 8300000, guid: d24fe15e3c1dc2c4ab0854eb950ae525, type: 3}
   introSound: {fileID: 8300000, guid: 224c1993c96cbb846b224a02eab34089, type: 3}
+  tripSound: {fileID: 8300000, guid: 2adcee244463c154794b23fae2351a94, type: 3}

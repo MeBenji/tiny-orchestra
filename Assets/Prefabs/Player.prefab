@@ -53,6 +53,10 @@ MonoBehaviour:
   keysMult: 120
   pointerMult: 1
   drag: 80
+  hasLost: 0
+  onLose:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &7227491156053054110
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69,8 +73,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   input: {fileID: 0}
-  defaultMaterial: {fileID: -876546973899608171, guid: 7470d22a50e35b74cb8a9e6db0595597, type: 3}
-  mouseOnMaterial: {fileID: -876546973899608171, guid: 571ac6852954c7b478715f5d44fc455b, type: 3}
+  defaultMaterial: {fileID: 2100000, guid: bccd7b27c70bde54699f400018a22db5, type: 2}
+  mouseOnMaterial: {fileID: 2100000, guid: aac1c4964e8821e4daee1813afff8476, type: 2}
   mouseAim: 0
 --- !u!114 &7064203384027108742
 MonoBehaviour:
@@ -249,7 +253,7 @@ SpriteRenderer:
   m_SortingLayer: 2
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: 746c12898b7aca54eb7b1af421bb1c00, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b303e8b2df4768449ad11bfb1a338410, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

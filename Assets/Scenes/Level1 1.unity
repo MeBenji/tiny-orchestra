@@ -815,10 +815,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1510326903209946962, guid: efdc1e7346b4d784eabcabf9340d0e02, type: 3}
-      insertIndex: 2
-      addedObject: {fileID: 1491791349}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: efdc1e7346b4d784eabcabf9340d0e02, type: 3}
 --- !u!1 &533292977
 GameObject:
@@ -6162,28 +6159,6 @@ MonoBehaviour:
   maxVol: 1.2
   midVol: 1
   minVol: 0
---- !u!1 &1491791345 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1510326903209946962, guid: efdc1e7346b4d784eabcabf9340d0e02, type: 3}
-  m_PrefabInstance: {fileID: 531627358}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1491791349
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1491791345}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6dd24f7c468d53a4ca6cf74b669ef6ae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Direct
-  enemyMask:
-    serializedVersion: 2
-    m_Bits: 128
-  defaultMaterial: {fileID: -876546973899608171, guid: 7470d22a50e35b74cb8a9e6db0595597, type: 3}
-  mouseOnMaterial: {fileID: -876546973899608171, guid: 571ac6852954c7b478715f5d44fc455b, type: 3}
 --- !u!1001 &1568059234
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6259,29 +6234,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3479550470548846153, guid: 65b5165988b1fe04aa82f5f1e1ac5939, type: 3}
-      insertIndex: 1
-      addedObject: {fileID: 1568059240}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 65b5165988b1fe04aa82f5f1e1ac5939, type: 3}
---- !u!1 &1568059235 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3479550470548846153, guid: 65b5165988b1fe04aa82f5f1e1ac5939, type: 3}
-  m_PrefabInstance: {fileID: 1568059234}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1568059240
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1568059235}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15a2c431a12d30d4dbfd97d81a105e71, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Enemy
-  instrumentType: 0
 --- !u!1 &1807685066
 GameObject:
   m_ObjectHideFlags: 0

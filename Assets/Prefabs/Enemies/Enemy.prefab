@@ -54,7 +54,7 @@ MonoBehaviour:
   instrument: {fileID: 0}
   startPlayEffect: {fileID: 7165898915320878343}
   whilePlayEffect: {fileID: 8484718212850288322}
-  highlightMaterial: {fileID: 2100000, guid: 279c17c7ab97e8a42b49dbbfc732ecee, type: 2}
+  highlightMaterial: {fileID: 2100000, guid: aac1c4964e8821e4daee1813afff8476, type: 2}
   points: 100
   onPlayInstrument:
     m_PersistentCalls:
@@ -72,6 +72,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   speed: 0.5
+  bumpDistance: 0.5
 --- !u!114 &345024312980030527
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -106,7 +107,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 0.1}
+  m_Size: {x: 2, y: 3, z: 0.1}
   m_Center: {x: 0, y: 1, z: 0}
 --- !u!82 &4104640124114911697
 AudioSource:
@@ -5192,7 +5193,7 @@ SpriteRenderer:
   m_Size: {x: 0.9375, y: 1.5664062}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
 --- !u!114 &7580942276769649895

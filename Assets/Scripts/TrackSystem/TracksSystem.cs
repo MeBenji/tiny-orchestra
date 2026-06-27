@@ -26,11 +26,13 @@ public class TracksSystem : MonoBehaviour
     public static Action<Instruments, float>  enemyInstrument;
     public static Action<Instruments> priorizeInstrument;
     public static Action resetInstrument;
+    public static Action stopMusic;
 
     private void Awake() {
         enemyInstrument = OnEnemyInstrument;
         priorizeInstrument = OnPriorizeInstrument;
         resetInstrument = OnResetInstruments;
+        stopMusic = OnStopMusic;
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -91,6 +93,14 @@ public class TracksSystem : MonoBehaviour
                 t += Time.deltaTime;
                 yield return null;
             }
+        }
+    }
+
+    void OnStopMusic()
+    {
+        foreach(AudioSource track in tracks)
+        {
+            track.Stop();
         }
     }
 }

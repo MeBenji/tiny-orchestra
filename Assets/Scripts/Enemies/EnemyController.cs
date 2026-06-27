@@ -62,6 +62,17 @@ public class EnemyController : MonoBehaviour
         whilePlayEffect.Play();
     }
 
+    public void Trip()
+    {
+        audioSource.PlayOneShot(instrument.tripSound);
+    }
+
+    public void StopSteps()
+    {
+        GetComponent<MoveToPlayer>().enabled = false;
+        audioSource.Stop();
+    }
+
     public void Select(bool isSelected)
     {
         if (IsPlaying) {
