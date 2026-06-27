@@ -68,6 +68,11 @@ public class Direct : MonoBehaviour
         else if (previousEnemy != null)
         {
             previousEnemy.Select(false);
+            previousEnemy = null;
+        }
+        else
+        {
+            previousEnemy = null;
         }
     }
 
