@@ -27,8 +27,7 @@ public class MoveToPlayer : MonoBehaviour
         {
             GetComponent<EnemyController>().StopSteps();
 
-            if (player.hasLost) { return; }
-            player.onLose?.Invoke();
+            if (GameManager.Instance.IsGameOver) { return; }
             gameObject.GetComponent<EnemyController>().Trip();
         }
     }
