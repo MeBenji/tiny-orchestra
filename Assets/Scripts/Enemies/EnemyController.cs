@@ -9,6 +9,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField] ParticleSystem whilePlayEffect;
     [SerializeField] Material highlightMaterial;
     [SerializeField] int points;
+    private SpawnManager spawnManager;
     public UnityEvent onPlayInstrument;
     public bool IsPlaying { get; private set; }
     Material baseMaterial;
@@ -24,6 +25,7 @@ public class EnemyController : MonoBehaviour
 
     private void OnEnable() {
         audioSource.Play();
+        isWalking = true;
 
         onPlayInstrument.AddListener(AddScore);
         onPlayInstrument.AddListener(UpdateTrackSystem);
@@ -31,13 +33,31 @@ public class EnemyController : MonoBehaviour
         onPlayInstrument.AddListener(TransitionSound);
         onPlayInstrument.AddListener(PlayEffects);
 
-        GameManager.Instance.onLose.AddListener(StopSteps);
+        GameManager.Instance.onGameOver.AddListener(StopSteps);
         GameManager.Instance.onLose.AddListener(StopPlayEffects);
+    }
+
+    private void OnDisable()
+    {
+        onPlayInstrument.RemoveListener(AddScore);
+        onPlayInstrument.RemoveListener(UpdateTrackSystem);
+        onPlayInstrument.RemoveListener(TransitionState);
+        onPlayInstrument.RemoveListener(TransitionSound);
+        onPlayInstrument.RemoveListener(PlayEffects);
+
+        GameManager.Instance.onGameOver.RemoveListener(StopSteps);
+        GameManager.Instance.onLose.RemoveListener(StopPlayEffects);
+    }
+
+    public void Init(SpawnManager spawnManager)
+    {
+        this.spawnManager = spawnManager;
     }
 
     private void AddScore()
     {
         ScoreManager.AddPoints?.Invoke(points);
+        spawnManager?.onEnemyDirected?.Invoke();
     }
 
     private void UpdateTrackSystem()
@@ -74,7 +94,6 @@ public class EnemyController : MonoBehaviour
     public void Trip()
     {
         GameManager.Instance.onLose?.Invoke();
-        GameManager.Instance.onGameOver?.Invoke();
         StopSteps();
         audioSource.PlayOneShot(instrument.tripSound);
     }
