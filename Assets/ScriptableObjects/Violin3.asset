@@ -15,4 +15,4 @@ MonoBehaviour:
   type: 9
   track: {fileID: 8300000, guid: 03947fb2cb251a447be5d6c1aa8f7130, type: 3}
   introSound: {fileID: 8300000, guid: 224c1993c96cbb846b224a02eab34089, type: 3}
-  tripSound: {fileID: 8300000, guid: 2adcee244463c154794b23fae2351a94, type: 3}
+  tripSound: {fileID: 8300000, guid: d974462b9bed7044fb1399f2c04ccce1, type: 3}
