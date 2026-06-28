@@ -44,7 +44,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: e8f611af66ee20348826f5fa1dfdc411, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
@@ -173,7 +173,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 023322e284c2ed3418998122993aaaac, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
@@ -302,7 +302,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 03947fb2cb251a447be5d6c1aa8f7130, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
@@ -431,7 +431,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: b26292f7bca18f44b9c2b192da190481, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
@@ -560,7 +560,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: d24fe15e3c1dc2c4ab0854eb950ae525, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
@@ -689,7 +689,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 50a2bde964711394e93cbe0d204f2b5e, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
@@ -818,7 +818,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 375ec54b0e284d14fb09d1da68329b8f, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
@@ -947,7 +947,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 252cb2d06970cc845ae68a42bd5f4cc2, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
@@ -1076,7 +1076,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: cc0fb4afd2f21904bbfc789a93f8624b, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
@@ -1205,7 +1205,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 1a2b0ae5d7cf2cc42921433cf5fa0aeb, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
@@ -1339,22 +1339,41 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9190104393359455402}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ad84c365dfd78374fa2bd7f8608af3b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TracksSystem
-  tracks:
-  - {fileID: 6205458123123108516}
-  - {fileID: 6264906784576789978}
-  - {fileID: 5538423765053380940}
-  - {fileID: 9093868725270950529}
-  - {fileID: 3775429400892174236}
-  - {fileID: 8725309454814266769}
-  - {fileID: 1954910870425678012}
-  - {fileID: 1546922945150112229}
-  - {fileID: 6413308424682246843}
-  - {fileID: 8541036896553866439}
-  maxVol: 1.2
-  midVol: 1
-  minVol: 0
+  volumeFadeTime: 1
+  instrumentStates:
+  - instrument: 0
+    track: {fileID: 6205458123123108516}
+    volume: 0
+  - instrument: 1
+    track: {fileID: 6264906784576789978}
+    volume: 0
+  - instrument: 2
+    track: {fileID: 5538423765053380940}
+    volume: 0
+  - instrument: 3
+    track: {fileID: 9093868725270950529}
+    volume: 0
+  - instrument: 4
+    track: {fileID: 3775429400892174236}
+    volume: 0
+  - instrument: 5
+    track: {fileID: 8725309454814266769}
+    volume: 0
+  - instrument: 6
+    track: {fileID: 1954910870425678012}
+    volume: 0
+  - instrument: 7
+    track: {fileID: 1546922945150112229}
+    volume: 0
+  - instrument: 8
+    track: {fileID: 6413308424682246843}
+    volume: 0
+  - instrument: 9
+    track: {fileID: 8541036896553866439}
+    volume: 0
+  maxVolume: 1

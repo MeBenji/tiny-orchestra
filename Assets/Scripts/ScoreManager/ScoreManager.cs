@@ -2,6 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
+[DefaultExecutionOrder(-10)]
 public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager Instance;
@@ -19,6 +20,7 @@ public class ScoreManager : MonoBehaviour
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
+            return;
         }
         Instance = this;
         DontDestroyOnLoad(gameObject);
@@ -35,6 +37,11 @@ public class ScoreManager : MonoBehaviour
     public int GetPoints()
     {
         return points;
+    }
+
+    public void OnResetPoints()
+    {
+        points = 0;
     }
 
     void LoadHighScore()

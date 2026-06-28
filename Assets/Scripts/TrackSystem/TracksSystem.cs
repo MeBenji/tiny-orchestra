@@ -29,20 +29,18 @@ public class TracksSystem : MonoBehaviour
 
     [SerializeField] private float volumeFadeTime = 1f;
     private Coroutine fadeCoroutine;
-    private double playDelay = 1.0;
+    private double playDelay = 4.0;
 
     [SerializeField] List<InstrumentState> instrumentStates;
     Dictionary<Instruments, InstrumentState> instrumentStates_dict;
 
     public float maxVolume = 1f;
 
-    public static Action stopMusic;
     public static Action<Instruments, float> playInstrument;
 
     private void Awake()
     {
         playInstrument = OnPlayInstrument;
-        stopMusic = OnStopMusic;
 
         instrumentStates_dict = new Dictionary<Instruments, InstrumentState>();
         foreach(InstrumentState state in instrumentStates)
@@ -55,11 +53,21 @@ public class TracksSystem : MonoBehaviour
         PlayMusic();
     }
 
+    private void OnEnable()
+    {
+        GameManager.Instance.onLose.AddListener(StopMusic);
+    }
+
+    private void OnDisable()
+    {
+        GameManager.Instance.onLose.RemoveListener(StopMusic);
+    }
+
     void OnPlayInstrument(Instruments instrument, float volume)
     {
         InstrumentState state = instrumentStates_dict[instrument];
 
-        if(state.volume < 1)
+        if(state.volume < maxVolume)
         {
             float targetVolume = Mathf.Clamp(state.volume + volume, 0f, maxVolume);
             if (fadeCoroutine != null)
@@ -67,7 +75,7 @@ public class TracksSystem : MonoBehaviour
                 StopCoroutine(fadeCoroutine);
             }
             fadeCoroutine = StartCoroutine(FadeVolume(state.track, state.volume, targetVolume));
-            state.volume += targetVolume;
+            state.volume = targetVolume;
         }
     }
 
@@ -92,11 +100,11 @@ public class TracksSystem : MonoBehaviour
         }
     }
 
-    void OnStopMusic()
+    void StopMusic()
     {
         foreach (InstrumentState state in instrumentStates)
         {
-            state.track.Stop();
+            StartCoroutine(FadeVolume(state.track, state.volume, 0f));
         }
     }
 }

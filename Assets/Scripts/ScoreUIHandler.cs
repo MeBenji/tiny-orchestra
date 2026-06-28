@@ -7,18 +7,22 @@ public class ScoreUIHandler : MonoBehaviour
 
     private void Start()
     {
-        ScoreManager.Instance.onUpdatePoints.AddListener(UpdateUI);
         int points = ScoreManager.Instance.GetPoints();
         UpdateUI(points);
+    }
+
+    private void OnEnable()
+    {
+        ScoreManager.Instance.onUpdatePoints.AddListener(UpdateUI);
+    }
+
+    private void OnDisable()
+    {
+        ScoreManager.Instance.onUpdatePoints.RemoveListener(UpdateUI);
     }
 
     private void UpdateUI(int points)
     {
         text.text = points.ToString();
-    }
-
-    private void OnDestroy()
-    {
-        ScoreManager.Instance.onUpdatePoints.RemoveListener(UpdateUI);
     }
 }

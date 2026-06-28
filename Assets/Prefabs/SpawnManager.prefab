@@ -66,4 +66,20 @@ MonoBehaviour:
     - {fileID: 7028697386537541363, guid: 06628d7834e8b5349a6350ed48491423, type: 3}
     quantity: 1
     minOneEach: 0
+  - prefabs:
+    - {fileID: 7028697386537541363, guid: 06628d7834e8b5349a6350ed48491423, type: 3}
+    - {fileID: 2091840545587401968, guid: 3b5d64e69b035564c8e0908213450266, type: 3}
+    - {fileID: 7164817201017631968, guid: c40c1bbbec683c048a69cffc71a3120f, type: 3}
+    quantity: 6
+    minOneEach: 1
+  - prefabs:
+    - {fileID: 7028697386537541363, guid: 06628d7834e8b5349a6350ed48491423, type: 3}
+    - {fileID: 2091840545587401968, guid: 3b5d64e69b035564c8e0908213450266, type: 3}
+    - {fileID: 7164817201017631968, guid: c40c1bbbec683c048a69cffc71a3120f, type: 3}
+    - {fileID: 7316295662521049424, guid: 87c83622a0cb361448ab5f5ff7eccfde, type: 3}
+    quantity: 4
+    minOneEach: 0
   enemySpawnList: []
+  onEnemyDirected:
+    m_PersistentCalls:
+      m_Calls: []

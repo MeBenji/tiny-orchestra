@@ -24,9 +24,18 @@ public class PlayerController : MonoBehaviour
 
     Vector2 mov;
 
-    private void Awake()
+    private void OnEnable()
     {
-        onLose.AddListener(Lose);
+        GameManager.Instance.onGameOver.AddListener(OnGameOver);
+        input.actions["Spin"].Enable();
+        input.actions["Fire"].Enable();
+    }
+
+    private void OnDisable()
+    {
+        GameManager.Instance.onGameOver.RemoveListener(OnGameOver);
+        input.actions["Spin"].Disable();
+        input.actions["Fire"].Disable();
     }
 
     // Update is called once per frame
@@ -41,18 +50,9 @@ public class PlayerController : MonoBehaviour
         vinyl.Rotate(Vector3.up * mov.x * Time.deltaTime);
     }
 
-    private void Lose()
+    private void OnGameOver()
     {
-        if (hasLost) { return; }
-        hasLost = true;
         GetComponent<Direct>().enabled = false;
         GetComponent<PlayerController>().enabled = false;
-        TracksSystem.stopMusic?.Invoke();
-
-        Destroy(FindAnyObjectByType<SpawnManager>());
-        foreach(EnemyController enemy in FindObjectsByType<EnemyController>())
-        {
-            enemy.StopSteps();
-        }
     }
 }

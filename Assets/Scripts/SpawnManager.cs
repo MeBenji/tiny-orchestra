@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class SpawnManager : MonoBehaviour
 {
@@ -14,12 +15,35 @@ public class SpawnManager : MonoBehaviour
 
     [SerializeField] float spawnRadius;
     public float spawnDelay;
+    private float initialDelay = 3;
     [SerializeField] List<Phase> phases;
     [SerializeField] List<GameObject> enemySpawnList;
+    public UnityEvent onEnemyDirected;
+    int enemiesLeft;
+
+    private void OnEnable()
+    {
+        onEnemyDirected.AddListener(OnEnemyDirected);
+    }
+
+    private void OnDisable()
+    {
+        onEnemyDirected.RemoveListener(OnEnemyDirected);
+    }
+
+    private void OnEnemyDirected()
+    {
+        enemiesLeft--;
+        if (enemiesLeft <= 0)
+        {
+            GameManager.Instance.onWin?.Invoke();
+        }
+    }
 
     private void Awake()
     {
         BuildEnemySpawnList();
+        enemiesLeft = enemySpawnList.Count;
     }
 
     private void Start()
@@ -29,6 +53,7 @@ public class SpawnManager : MonoBehaviour
 
     private IEnumerator SpawnRoutine()
     {
+        yield return new WaitForSeconds(initialDelay);
         foreach(GameObject enemy in enemySpawnList)
         {
             SpawnEnemy(enemy);
@@ -103,6 +128,7 @@ public class SpawnManager : MonoBehaviour
         GameObject enemy = Instantiate(enemyPrefab);
         enemy.transform.position = position;
         enemy.transform.forward = lookDirection;
+        enemy.GetComponent<EnemyController>().Init(this);
         enemy.SetActive(true);
     }
 }
