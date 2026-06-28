@@ -105,5 +105,7 @@ InitTestScene*.unity*
 # Auto-generated cache in Assets folder
 /[Aa]ssets/[Ss]ceneDependencyCache*
 
+/DuNguyn/*
+!/DuNguyn/README.md
 /WindowsBuilds
 /WebBuilds
