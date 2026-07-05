@@ -40,8 +40,6 @@ public class TracksSystem : MonoBehaviour
 
     private void Awake()
     {
-        playInstrument = OnPlayInstrument;
-
         instrumentStates_dict = new Dictionary<Instruments, InstrumentState>();
         foreach(InstrumentState state in instrumentStates)
         {
@@ -55,11 +53,13 @@ public class TracksSystem : MonoBehaviour
 
     private void OnEnable()
     {
+        playInstrument = OnPlayInstrument;
         GameManager.Instance.onLose.AddListener(StopMusic);
     }
 
     private void OnDisable()
     {
+        playInstrument = null;
         GameManager.Instance.onLose.RemoveListener(StopMusic);
     }
 
