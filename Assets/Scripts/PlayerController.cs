@@ -34,6 +34,7 @@ public class PlayerController : MonoBehaviour
     private void OnDisable()
     {
         GameManager.Instance.onGameOver.RemoveListener(OnGameOver);
+        if (input == null) { return; }
         input.actions["Spin"].Disable();
         input.actions["Fire"].Disable();
     }
